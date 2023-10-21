@@ -14,4 +14,20 @@ public class Triangle {
             }
             return perimeter;
         }
+
+        public Point.TriangleType displayTriangleType(){
+            double a = vertices[0].distanceBetweenTwoPoints(vertices[1]);
+            double b = vertices[1].distanceBetweenTwoPoints(vertices[2]);
+            double c = vertices[2].distanceBetweenTwoPoints(vertices[0]);
+
+            if(a == b && b == c){
+                return (Point.TriangleType.ISOCELES);
+            } else if (a == b || b == c || c == a) {
+                return (Point.TriangleType.EQUILATERAL);
+            }else {
+                return (Point.TriangleType.UNKNOWN);
+            }
+        }
+
+
 }
