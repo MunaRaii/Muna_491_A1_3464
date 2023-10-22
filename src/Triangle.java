@@ -29,5 +29,20 @@ public class Triangle {
             }
         }
 
+        public double areaOfTriangle() {
+            double s = calculatePerimeter() / 2;
+            double a = vertices[0].distanceBetweenTwoPoints(vertices[1]);
+            double b = vertices[1].distanceBetweenTwoPoints(vertices[2]);
+            double c = vertices[2].distanceBetweenTwoPoints(vertices[0]);
+            return Math.sqrt(s * (s-a) * (s-b) * (s-c));
+        }
+        public boolean isInsidePoint(Point point){
+            double area = areaOfTriangle();
+            double area1 = new Triangle(new Point[]{point, vertices[0], vertices[1]}).areaOfTriangle();
+            double area2 = new Triangle(new Point[]{point, vertices[1], vertices[2]}).areaOfTriangle();
+            double area3 = new Triangle(new Point[]{point, vertices[2], vertices[0]}).areaOfTriangle();
+            return area == area1 + area2 + area3;
+        }
+
 
 }
